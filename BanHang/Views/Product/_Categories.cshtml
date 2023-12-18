@@ -1,0 +1,19 @@
+﻿@using BanHang.Models
+@{ 
+    CnCstoreEntities dBContext = new CnCstoreEntities();
+    List<Category> Listcategories = dBContext.Categories.ToList();
+}
+
+<div style="font-family:Arial">
+    <h2>
+        Categories
+    </h2>
+    <ul>
+        @foreach(var item in Listcategories)
+            {
+                <li>
+                    @Html.ActionLink(item.CatName, "Index", "Product", new {categoryId = item.CatId}, null)
+                </li>
+            }
+    </ul>
+</div>
